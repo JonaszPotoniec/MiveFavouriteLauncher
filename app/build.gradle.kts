@@ -22,9 +22,20 @@ android {
         ndk { abiFilters += rustAbi }
     }
 
+    // Release key comes from the environment (set by the release workflow); local builds fall back to debug.
+    val keystore = providers.environmentVariable("SIGNING_KEYSTORE_FILE").orNull
+    signingConfigs {
+        if (keystore != null) create("release") {
+            storeFile = file(keystore)
+            storePassword = System.getenv("SIGNING_STORE_PASSWORD")
+            keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
         }
     }
 }
