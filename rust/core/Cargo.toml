@@ -1,0 +1,12 @@
+[package]
+name = "mivefav-core"
+edition.workspace = true
+rust-version.workspace = true
+version.workspace = true
+license.workspace = true
+
+[dependencies]
+fontdue.workspace = true
+
+[dev-dependencies]
+png = "0.18.1"

@@ -1,0 +1,20 @@
+[workspace]
+resolver = "3"
+members = ["rust/core", "rust/app"]
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.100"
+version = "0.1.0"
+license = "MIT"
+
+[workspace.dependencies]
+fontdue = "0.9.5"
+log = "0.4.35"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true

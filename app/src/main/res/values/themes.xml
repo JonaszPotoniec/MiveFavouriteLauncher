@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Rust draws everything. The window background matches the grid background so the
+         system's starting window blends into the first frame. -->
+    <color name="grid_background">#FF101418</color>
+
+    <style name="Theme.Launcher" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/grid_background</item>
+        <item name="android:statusBarColor">@color/grid_background</item>
+        <item name="android:navigationBarColor">@color/grid_background</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <!-- No app icon on the Android 12+ splash screen: it would flash for the ~250 ms
+             before the first frame. -->
+        <item name="android:windowSplashScreenBackground">@color/grid_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@android:color/transparent</item>
+    </style>
+
+    <string name="app_name">Favourites</string>
+</resources>
